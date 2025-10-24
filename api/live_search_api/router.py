@@ -2,6 +2,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 from json import dumps
 from itertools import groupby
+from typing import Optional, Union
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
@@ -167,7 +168,7 @@ async def get_live_search_list_table(
         start: int = Query(0),
         length: int = Query(0),
         sort_desc: bool = Query(False),
-        button_state: bool | None = Query(None),
+        button_state: Optional[bool] = Query(None),
         metric_type: str = Query(None),
         state_type: str = Query(None),
         user: User = Depends(current_user),

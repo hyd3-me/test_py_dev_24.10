@@ -1,7 +1,7 @@
 from datetime import datetime
 from uuid import UUID
 from enum import Enum
-from typing import Optional
+from typing import Optional, Union
 
 from pydantic import BaseModel, model_validator
 
@@ -62,7 +62,7 @@ class CreateNewList(BaseModel):
 
 class PositionDayStat(BaseModel):
     link: str
-    count: int | float | None
+    count: Optional[Union[int, float]]
 
 
 class GetPositionTableData(BaseModel):

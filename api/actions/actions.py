@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Callable
+from typing import Callable, Optional, Union
 
 from psycopg2 import IntegrityError
 from sqlalchemy import func, select
@@ -34,7 +34,7 @@ async def add_last_load_date(async_session: Callable, metrics_type: str) -> None
             print(f"Date {current_date} already exists.")
 
 
-async def get_last_load_date(async_session: Callable, metrics_type: str) -> str | None:
+async def get_last_load_date(async_session: Callable, metrics_type: str) -> Optional[str]:
     async with async_session() as s:
         # Создаем запрос для получения записи с максимальным ID
         stmt = (
