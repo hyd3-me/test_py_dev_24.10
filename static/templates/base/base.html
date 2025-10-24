@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/css/newStyles.css" />
+
+  {% if title %}
+  <title>{{ title }}</title>
+  {% else %}
+  <title>SEO</title>
+  {% endif %}
+</head>
+
+<body>
+  <div class="app">
+    <div class="popup">
+      <div class="popup-background">
+        {% include "templates/base/popup.html"%}
+        {% block popups %}
+        {% endblock %}
+      </div>
+    </div>
+    {% include "/templates/base/sidebar.html"%}
+    <div class="content">
+      {% include "/templates/base/header.html"%}
+      <div class="wrapper">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+  <script>
+    function getCookie(name) {
+      const match = document.cookie.match(
+        new RegExp("(^| )" + name + "=([^;]+)")
+      );
+      return match ? match[2] : null;
+    }
+    var sidebarOpen = document.querySelectorAll("[data-expanded]");
+    if (getCookie("sidebar") == 1) {
+      sidebarOpen.forEach((el) => {
+        el.dataset.expanded = true;
+        document.querySelector(".content").style.width = "calc(100% - 76px)";
+        document.querySelector(".content").style.marginLeft = "72px";
+        document.querySelector(".header").style.width = "calc(100% - 72px)";
+        document.querySelector(".burger").classList.add("active");
+      });
+    } else if (getCookie("sidebar") == 2) {
+      sidebarOpen.forEach((el) => {
+        el.dataset.expanded = false;
+      });
+    }
+  </script>
+  {% block scripts %}
+  {% endblock %}
+  <script src="/static/js/sideHead.js" defer></script>
+  <script type="module" src="/static/js/groupConfig.js" defer></script>
+  <script type="module" src="/static/js/index.js" defer></script>
+</body>
+
+</html>

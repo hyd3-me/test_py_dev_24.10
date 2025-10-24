@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/newStyles.css" />
+    <title>SEO</title>
+  </head>
+  <body>
+    <form class="auth-body" 
+    id="{% if 'register' in request.path%}register{% else %}login{% endif %}">
+      <div class="popup-title">
+        {% if 'register' in request.path %}
+        Регистрация
+        {% else %}
+        Вход в аккаунт
+        {% endif %}
+      </div>
+      <div class="input-title">Введите email</div>
+      <input
+        name="{% if 'register' in request.path%}email{% else %}username{% endif %}"
+        type="email"
+        class="input input--mb"
+        placeholder="Ваш email"
+      />
+      <div class="input-title">Введите пароль</div>
+      <input
+        name="password"
+        type="password"
+        class="input input--mb"
+        placeholder="Ваш  пароль"
+      />
+      {% if 'register' in request.path %}
+        <button type="submit" class="blue-button blue-button--mr btn-reset">
+          Зарегистрироваться
+        </button>
+        <a href="{{ url_for('login_page_test') }}" class="to-reg">Есть аккаунт? Войти</a>
+      {% else %}
+        <button type="submit" class="blue-button blue-button--mr btn-reset">
+          Войти
+        </button>
+        <a href="{{ url_for('register_test') }}" class="to-reg">Нет аккаунта? Зарегистрироваться</a>
+      {% endif %}
+    </form>
+  <script id="usersScript" src="/static/js/users.js" data-successUrl="{{ url_for('show_main_page') }}"></script>
+  </body>
+</html>

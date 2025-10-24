@@ -1,0 +1,321 @@
+.
+├── alembic_general.ini
+├── alembic.ini
+├── api
+│   ├── actions
+│   │   ├── actions.py
+│   │   ├── indicators.py
+│   │   ├── metrics_queries.py
+│   │   ├── metrics_url.py
+│   │   ├── __pycache__
+│   │   ├── queries.py
+│   │   ├── query_url_merge.py
+│   │   ├── top.py
+│   │   ├── urls.py
+│   │   └── utils.py
+│   ├── admin_handlers.py
+│   ├── auth
+│   │   ├── auth_config.py
+│   │   ├── exceptions.py
+│   │   ├── http_exception.py
+│   │   ├── manager.py
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   ├── router.py
+│   │   ├── schemas.py
+│   │   └── utils.py
+│   ├── config
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   ├── router.py
+│   │   └── utils.py
+│   ├── history_api
+│   │   ├── __pycache__
+│   │   └── router.py
+│   ├── live_search_api
+│   │   ├── db.py
+│   │   ├── __pycache__
+│   │   └── router.py
+│   ├── merge_api
+│   │   ├── __pycache__
+│   │   └── router.py
+│   ├── __pycache__
+│   │   ├── admin_handlers.cpython-310.pyc
+│   │   ├── admin_handlers.cpython-312.pyc
+│   │   ├── schemas.cpython-310.pyc
+│   │   └── schemas.cpython-312.pyc
+│   ├── query_api
+│   │   ├── __pycache__
+│   │   └── router.py
+│   ├── schemas.py
+│   ├── services
+│   │   ├── __pycache__
+│   │   └── router.py
+│   └── url_api
+│       ├── __pycache__
+│       └── router.py
+├── config.py
+├── const.py
+├── db
+│   ├── dals.py
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── dals.cpython-310.pyc
+│   │   ├── dals.cpython-312.pyc
+│   │   ├── models.cpython-310.pyc
+│   │   ├── models.cpython-312.pyc
+│   │   ├── session.cpython-310.pyc
+│   │   ├── session.cpython-312.pyc
+│   │   ├── utils.cpython-310.pyc
+│   │   └── utils.cpython-312.pyc
+│   ├── session.py
+│   └── utils.py
+├── docker-compose.yaml
+├── geotargets-yandex.csv
+├── google_test.py
+├── logs
+│   └── clear_logs.sh
+├── main.py
+├── migrations
+│   ├── env.py
+│   ├── __pycache__
+│   │   ├── env.cpython-310.pyc
+│   │   └── env.cpython-312.pyc
+│   ├── README
+│   ├── script.py.mako
+│   └── versions
+│       ├── 056553c53121_create_queryindicator_table.py
+│       ├── 187d55dec0ad_add_model_for_query.py
+│       ├── 24907a842a6c_create_queryurltop.py
+│       ├── 2fa81f1342e7_add_model_for_query.py
+│       ├── 3a2790da30d8_add_demande_in_url_models.py
+│       ├── 4468c67b0fa2_init_models.py
+│       ├── 54583e7252cc_delete_column_query_and_url_in_metrics_.py
+│       ├── 5a94ef525b78_add_metrics_type.py
+│       ├── 5e1281e05d92_delete_logs_tables.py
+│       ├── 6461cc35d6e4_add_last_update_date_to_db.py
+│       ├── 67383e03317a_create_register_and_auth_system.py
+│       ├── 873b6ed9a230_add_count_field_to_queryurltop.py
+│       ├── 87b4cab61fd7_add_total_ctr_indicator_in_model.py
+│       ├── a43051cc652f_create_upgate_logs_query_and_url.py
+│       ├── aa51dd51063b_delete_user.py
+│       ├── b73f9405c347_add_query_id_and_url_id_for_new_id_.py
+│       ├── bc86504b8f87_replace_zero_with_null_and_create_views.py
+│       ├── c25f17540c5c_create_queryurlsmerge_abd_.py
+│       ├── d89d3d74cdda_add_sequences_for_query_and_url_table_.py
+│       ├── edcf4b7754f7_change_lable_query_field_from_url_to_.py
+│       ├── fe59ac7f0341_create_updatelogsindicator_table.py
+│       └── __pycache__
+├── migrations_general
+│   ├── env.py
+│   ├── __pycache__
+│   │   ├── env.cpython-310.pyc
+│   │   └── env.cpython-312.pyc
+│   ├── README
+│   ├── script.py.mako
+│   └── versions
+│       ├── 032f07b7d08d_add_many_to_many_config_group.py
+│       ├── 04e0b0fe7b21_add_many_to_many_user_group.py
+│       ├── 0a6c4ced02cf_add_cascade_delete_for_user_query_.py
+│       ├── 0c07329eada3_add_cascad_for_listlrsearchsystem.py
+│       ├── 0fd4b4772302_add_email_field.py
+│       ├── 13f66995fb32_add_list_model.py
+│       ├── 19c4538f11bb_add_live_search_tables.py
+│       ├── 1d0e44087d2d_add_user_relation_to_list_autoupdate.py
+│       ├── 1e6687648fb1_add_position_field.py
+│       ├── 2396f8e02ba9_add_3_default_roles.py
+│       ├── 292230311e1f_create_live_search_auto_updates_.py
+│       ├── 3d33bdef2e5f_add_id_author_in_group.py
+│       ├── 40956d118891_change_relationship.py
+│       ├── 47a4952811f9_add_list_lr_id_field_in_yandex_google_.py
+│       ├── 4920427f03ac_delete_user_id_in_config.py
+│       ├── 4ef8930bfeb7_add_cascade.py
+│       ├── 503ffc00b25f_.py
+│       ├── 5954b59ad60a_create_user_and_config_db.py
+│       ├── 645aceed0889_add_column_id_author.py
+│       ├── 69ca132e5e49_add_user_id_as_integer.py
+│       ├── 7715caf98e70_change_username_field_to_nullable_true.py
+│       ├── 78767a5b4e57_apply_changes_to_role_table.py
+│       ├── 788ead7f5c11_add_last_update_date_fiend_to_user_.py
+│       ├── 7fb9546a6052_add_new_default_role_search.py
+│       ├── 895b751c4c6a_add_listlrsearchsystem_model_update_.py
+│       ├── 90cf6df62c39_add_default_for_role_field_in_user_table.py
+│       ├── a104a9e1b4b3_change_field_type_of_search_system_from_.py
+│       ├── aebb936cffc4_add_group_and_config_field.py
+│       ├── b522be0c9e66_add_role_table.py
+│       ├── ba2bf933322a_.py
+│       ├── de5b94dcc881_revert_changers.py
+│       ├── eb2bf4c68df9_create_yandexlr_table.py
+│       ├── ef7bf8530baf_revert_changers_user_id.py
+│       ├── f294a5452835_add_author_field_for_live_search.py
+│       ├── fd25da4e8425_add_listuri_table.py
+│       ├── ffa900c37242_not_true_unique_username_coloumn_in_user.py
+│       └── __pycache__
+├── __pycache__
+│   ├── celery_.cpython-310.pyc
+│   ├── config.cpython-310.pyc
+│   ├── config.cpython-312.pyc
+│   ├── const.cpython-310.pyc
+│   ├── const.cpython-312.pyc
+│   ├── main.cpython-310.pyc
+│   ├── main.cpython-312.pyc
+│   ├── scheduler.cpython-310.pyc
+│   └── scheduler.cpython-312.pyc
+├── requirements.txt
+├── scheduler.py
+├── scripts
+│   ├── cron.bash
+│   └── reset_query_count.ps1
+├── services
+│   ├── live_search_parser_async_google.py
+│   ├── live_search_parser_async_yandex.py
+│   ├── load_all_history.py
+│   ├── load_all_history.py.bkp
+│   ├── load_all_queries.py
+│   ├── load_all_urls.py
+│   ├── load_live_search.py
+│   ├── load_query_one_day.py
+│   ├── load_query_url_merge.py
+│   ├── load_url_one_day.py
+│   ├── __pycache__
+│   │   ├── live_search_parser_async_google.cpython-310.pyc
+│   │   ├── live_search_parser_async_google.cpython-312.pyc
+│   │   ├── live_search_parser_async_yandex.cpython-310.pyc
+│   │   ├── live_search_parser_async_yandex.cpython-312.pyc
+│   │   ├── load_all_history.cpython-310.pyc
+│   │   ├── load_all_history.cpython-312.pyc
+│   │   ├── load_all_queries.cpython-310.pyc
+│   │   ├── load_all_queries.cpython-312.pyc
+│   │   ├── load_all_urls.cpython-310.pyc
+│   │   ├── load_all_urls.cpython-312.pyc
+│   │   ├── load_live_search.cpython-310.pyc
+│   │   ├── load_live_search.cpython-312.pyc
+│   │   ├── load_query_url_merge.cpython-310.pyc
+│   │   ├── load_query_url_merge.cpython-312.pyc
+│   │   ├── search_competitors_async.cpython-310.pyc
+│   │   └── search_competitors_async.cpython-312.pyc
+│   ├── search_competitors_async.py
+│   ├── test.py
+│   └── text.json
+├── static
+│   ├── all-history.html
+│   ├── base.html
+│   ├── css
+│   │   ├── base_styles.css
+│   │   ├── history_styles.css
+│   │   ├── merge_styles.css
+│   │   ├── queries_styles.css
+│   │   ├── styles.css
+│   │   └── urls_styles.css
+│   ├── dist
+│   │   ├── bundle.js
+│   │   ├── css
+│   │   ├── datePicker.js
+│   │   ├── edit.html
+│   │   ├── edit_wproject.html
+│   │   ├── fonts
+│   │   ├── img
+│   │   ├── index.html
+│   │   ├── js
+│   │   ├── positions.html
+│   │   ├── positions_table.html
+│   │   ├── projects.html
+│   │   ├── query.html
+│   │   ├── sideHead.js
+│   │   ├── url.html
+│   │   └── wprojects.html
+│   ├── edit_list.html
+│   ├── fonts
+│   │   ├── PT-Root-UI_Bold.woff2
+│   │   ├── PT-Root-UI_Medium.woff
+│   │   └── PT-Root-UI_Regular.woff
+│   ├── group_menu.html
+│   ├── header.html
+│   ├── img
+│   │   └── svg
+│   ├── js
+│   │   ├── createPositionModal.js
+│   │   ├── datePicker.js
+│   │   ├── graphic.js
+│   │   ├── index.js
+│   │   ├── modals.js
+│   │   ├── sideHead2.js
+│   │   └── sideHead.js
+│   ├── lists.html
+│   ├── live_search_edit.html
+│   ├── live_search.html
+│   ├── live_search-info.html
+│   ├── live_search_list.html
+│   ├── login.html
+│   ├── main_page.html
+│   ├── merge_database.html
+│   ├── new_base.html
+│   ├── popup-background.html
+│   ├── positions.html
+│   ├── positions-table.html
+│   ├── profile.html
+│   ├── queries-info.html
+│   ├── query-url-merge.html
+│   ├── register.html
+│   ├── roles.html
+│   ├── sidebar.html
+│   ├── superuser.html
+│   ├── templates
+│   │   ├── base
+│   │   ├── get_queries_test
+│   │   └── utils
+│   ├── Unauthorized.html
+│   ├── urls-info.html
+│   └── user_menu.html
+├── tree.txt
+├── utils
+│   ├── comma_newline_speparated_values.py
+│   ├── daily_updates.py
+│   ├── excel.py
+│   ├── __init__.py
+│   └── __pycache__
+│       ├── comma_newline_speparated_values.cpython-310.pyc
+│       ├── comma_newline_speparated_values.cpython-312.pyc
+│       ├── daily_updates.cpython-310.pyc
+│       ├── daily_updates.cpython-312.pyc
+│       ├── excel.cpython-310.pyc
+│       ├── excel.cpython-312.pyc
+│       ├── exceptions.cpython-310.pyc
+│       ├── __init__.cpython-310.pyc
+│       └── __init__.cpython-312.pyc
+└── venv
+    ├── bin
+    │   ├── activate
+    │   ├── activate.csh
+    │   ├── activate.fish
+    │   ├── Activate.ps1
+    │   ├── alembic
+    │   ├── dotenv
+    │   ├── email_validator
+    │   ├── f2py
+    │   ├── fastapi
+    │   ├── gunicorn
+    │   ├── httpx
+    │   ├── mako-render
+    │   ├── markdown-it
+    │   ├── normalizer
+    │   ├── numpy-config
+    │   ├── pip
+    │   ├── pip3
+    │   ├── pip3.12
+    │   ├── pygmentize
+    │   ├── python -> python3.12
+    │   ├── python3 -> python3.12
+    │   ├── python3.12 -> /usr/local/bin/python3.12
+    │   ├── typer
+    │   ├── uvicorn
+    │   └── watchfiles
+    ├── include
+    │   ├── python3.12
+    │   └── site
+    ├── lib
+    │   └── python3.12
+    ├── lib64 -> lib
+    └── pyvenv.cfg
+
+60 directories, 258 files

@@ -1,0 +1,179 @@
+{% extends 'templates/base/base.html' %}
+{% block content %}
+<div class="box__body">
+  <div class="box__dates body-panel">
+    <div class="input-wrap">
+      <input id="searchText" type="text" class="input input--icon" placeholder="Начните вводить слово">
+      <label class="input-wrap-icon" for="input-search"></label>
+    </div>
+    <!-- <div class="body-panel__create-pos blue-button">Создать съем позиций</div> -->
+    <!-- <div class="body-panel__remain">
+            Осталось запросов
+            <span class="body-panel__remain-count">2699</span>
+            </div> -->
+  </div>
+</div>
+<div class="positions rent">
+  <div class="rent__header">
+    <div class="rent__header__name">
+      <label for="word" class="checkbox">
+        <input type="checkbox" role="switch" id="word" class="all-positions">
+        <span>Проекты</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5.42857 10C5.34898 10 5.27096 9.97931 5.20326 9.94026C5.13555 9.90121 5.08084 9.84533 5.04525 9.77889C5.00965 9.71244 4.99458 9.63806 5.00173 9.56408C5.00888 9.49009 5.03796 9.41943 5.08571 9.36L7.65714 6.16C7.69706 6.11032 7.74883 6.07 7.80834 6.04223C7.86785 6.01446 7.93347 6 8 6C8.06653 6 8.13215 6.01446 8.19166 6.04223C8.25117 6.07 8.30294 6.11032 8.34286 6.16L10.9143 9.36C10.962 9.41943 10.9911 9.49009 10.9983 9.56408C11.0054 9.63806 10.9903 9.71244 10.9548 9.77889C10.9192 9.84533 10.8644 9.90121 10.7967 9.94026C10.729 9.97931 10.651 10 10.5714 10H5.42857Z"
+            fill="#404040"></path>
+        </svg>
+      </label>
+    </div>
+    <div class="rent__header__domain">
+      <span>
+        <span>Домен</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5.42857 10C5.34898 10 5.27096 9.97931 5.20326 9.94026C5.13555 9.90121 5.08084 9.84533 5.04525 9.77889C5.00965 9.71244 4.99458 9.63806 5.00173 9.56408C5.00888 9.49009 5.03796 9.41943 5.08571 9.36L7.65714 6.16C7.69706 6.11032 7.74883 6.07 7.80834 6.04223C7.86785 6.01446 7.93347 6 8 6C8.06653 6 8.13215 6.01446 8.19166 6.04223C8.25117 6.07 8.30294 6.11032 8.34286 6.16L10.9143 9.36C10.962 9.41943 10.9911 9.49009 10.9983 9.56408C11.0054 9.63806 10.9903 9.71244 10.9548 9.77889C10.9192 9.84533 10.8644 9.90121 10.7967 9.94026C10.729 9.97931 10.651 10 10.5714 10H5.42857Z"
+            fill="#404040"></path>
+        </svg>
+      </span>
+    </div>
+    <div class="rent__header__pos">
+      <span>
+        <span>Количество позиций</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5.42857 10C5.34898 10 5.27096 9.97931 5.20326 9.94026C5.13555 9.90121 5.08084 9.84533 5.04525 9.77889C5.00965 9.71244 4.99458 9.63806 5.00173 9.56408C5.00888 9.49009 5.03796 9.41943 5.08571 9.36L7.65714 6.16C7.69706 6.11032 7.74883 6.07 7.80834 6.04223C7.86785 6.01446 7.93347 6 8 6C8.06653 6 8.13215 6.01446 8.19166 6.04223C8.25117 6.07 8.30294 6.11032 8.34286 6.16L10.9143 9.36C10.962 9.41943 10.9911 9.49009 10.9983 9.56408C11.0054 9.63806 10.9903 9.71244 10.9548 9.77889C10.9192 9.84533 10.8644 9.90121 10.7967 9.94026C10.729 9.97931 10.651 10 10.5714 10H5.42857Z"
+            fill="#404040"></path>
+        </svg>
+      </span>
+    </div>
+  </div>
+  <div class="rent__items">
+    {% for project in config_names %}
+      <div class="rent__item item-rent item-pos">
+        <div class="item-rent__name item-rent-block">
+          <div class="item-rent-block_name">
+            <label class="checkbox">
+              <input type="checkbox" role="switch" class="all-positions">
+            </label>
+            <a href="#" title="{{ project.name }}" onClick=proceedToProjectQuery('{{ project.name }}')>{{ project.name }}</a>
+          </div>
+        </div>
+        <div class="item-rent__project item-rent-block" style="justify-content: center;">
+          <div class="item-rent__project-links">
+            <a href=# onClick=proceedToProjectQueryTest('{{ project.name }}') class="item-rent__project-link">запросы</a>
+            <a href=# onClick=proceedToProjectUrlsTest('{{ project.name }}') class="item-rent__project-link">URLs</a>
+          </div>
+        </div>
+        <div class="item-rent__count item-rent-block">100</div>
+        <div class="item-rent__menu item-rent-block">
+          <div class="item-rent__refresh">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M22.6982 11.8754H20H19.875V12.0004C19.875 16.3513 16.351 19.8754 12 19.8754C10.511 19.8754 9.12245 19.455 7.93987 18.7373L9.22299 17.4542C10.0522 17.8864 11.0026 18.1254 12 18.1254C15.379 18.1254 18.125 15.3794 18.125 12.0004V11.8754H18H15.3018L19 8.17714L22.6982 11.8754ZM5.875 12.0004V12.1254H6H8.69822L5 15.8236L1.30178 12.1254H4H4.125V12.0004C4.125 7.6494 7.64904 4.12537 12 4.12537C13.489 4.12537 14.8775 4.54573 16.0601 5.26346L14.777 6.54658C13.9478 6.11428 12.9974 5.87537 12 5.87537C8.62096 5.87537 5.875 8.62133 5.875 12.0004Z"
+                fill="#0076F5" stroke="white" stroke-width="0.25" />
+            </svg>
+          </div>
+          <div class="item-rent__text">
+            <span>Обновлено</span>
+            <div class="item-rent__date">18.10.2024 в 10:11</div>
+          </div>
+          <a href="{{ url_for('edit_query', config_id=project.id) }}" class="item-rent__change">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M13.9372 9.24505L13.8311 9.13898L13.725 9.24505L5.67171 17.2984L5.62778 17.3423V17.4044V18.2222V18.3722H5.77778H6.59556H6.65769L6.70162 18.3283L14.755 10.275L14.861 10.1689L14.755 10.0628L13.9372 9.24505ZM19.6363 7.48494L19.6362 7.48505L18.1156 9.00565L14.9944 5.88444L16.515 4.36384C16.6547 4.22412 16.8472 4.15 17.0311 4.15C17.2259 4.15 17.4089 4.21657 17.5562 4.36384L19.6362 6.44384L19.6363 6.44395C19.7047 6.51225 19.759 6.59338 19.7961 6.6827C19.8331 6.77201 19.8522 6.86775 19.8522 6.96444C19.8522 7.06114 19.8331 7.15688 19.7961 7.24619C19.759 7.33551 19.7047 7.41664 19.6363 7.48494ZM4.15 16.7288L13.8311 7.04769L16.9523 10.1689L7.2712 19.85H4.15V16.7288Z"
+                fill="#0076F5" stroke="white" stroke-width="0.3" />
+            </svg>
+          </a>
+          <div onClick=deleteConfig("{{ url_for('delete_config', config_id=project.id) }}") class="item-rent__delete">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <mask id="mask0_2001_20925" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="24">
+                <rect width="24" height="24" fill="#D9D9D9" />
+              </mask>
+              <g mask="url(#mask0_2001_20925)">
+                <path
+                  d="M5.975 6.66667V6.56667H5.875H5.1V4.98889H9.375H9.475V4.88889V4.1H14.525V4.88889V4.98889H14.625H18.9V6.56667H18.125H18.025V6.66667V18.2222C18.025 18.6849 17.864 19.0782 17.5397 19.4076C17.2154 19.737 16.829 19.9 16.375 19.9H7.625C7.171 19.9 6.78456 19.737 6.46033 19.4076C6.13605 19.0782 5.975 18.6849 5.975 18.2222V6.66667ZM16.475 6.66667V6.56667H16.375H7.625H7.525V6.66667V18.2222V18.3222H7.625H16.375H16.475V18.2222V6.66667ZM11.025 8.54444V16.3444H9.475V8.54444H11.025ZM14.525 8.54444V16.3444H12.975V8.54444H14.525Z"
+                  fill="#E50C00" stroke="#FFE7E6" stroke-width="0.2" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% include '/templates/utils/pagination.html' %}
+{% endblock %}
+{% block scripts %}
+<script>
+  function getSelectedConfig() {
+      return localStorage.getItem('selectedConfig') || 'Dropdown';
+  }
+  function setSelectedConfig(configName) {
+      localStorage.setItem('selectedConfig', configName);
+  }
+
+  async function selectConfig(configName) {
+      setSelectedConfig(configName);
+
+      try {
+          const response = await fetch("{{ url_for('set_config') }}", {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ config_name: configName })
+          });
+
+          if (response.ok) {
+              console.log('Config set successfully');
+          } else {
+              const errorData = await response.json();
+              console.error('Error:', errorData.detail);
+              alert('Error: ' + errorData.detail);
+          }
+      } catch (error) {
+          console.error('Error during setting config:', error);
+          alert('An error occurred during setting config. Please try again.');
+      }
+  }
+
+  function deleteConfig(url) {
+      if (confirm('Are you sure you want to delete this config?')) {
+          fetch(url, {
+              method: 'DELETE'
+          }).then(response => response.json())
+            .then(data => {
+                if (data.status === 200) {
+                    alert(data.message);
+                    location.reload(); // Перезагружаем страницу после удаления
+                } else {
+                    alert('Failed to delete config');
+                }
+            });
+      }
+  }
+
+  async function proceedToProjectQuery(configName){
+    await selectConfig(configName)
+    window.location.href = '{{ url_for('get_queries') }}'
+  }
+
+  async function proceedToProjectQueryTest(configName){
+    await selectConfig(configName)
+    window.location.href = '{{ url_for('get_queries_test') }}'
+  }
+
+  async function proceedToProjectUrlsTest(configName){
+    await selectConfig(configName)
+    window.location.href = '{{ url_for('get_urls_test') }}'
+  }
+
+  async function proceedToProjectUrl(configName){
+    await selectConfig(configName)
+    window.location.href = '{{ url_for('get_urls') }}'
+  }
+
+
+</script>
+{% endblock %}

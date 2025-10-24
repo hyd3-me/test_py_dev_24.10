@@ -1,0 +1,74 @@
+{% extends 'templates/base/base.html' %}
+{% block content %}
+    <div class="edit-title">Редактирование проекта <a title="{{ config_data.name }}" href="#">{{ config_data.name }}</a></div>
+    <div class="edit-tabs">
+        <div class="edit-tab active" data-tab="tab-1">Общая информация</div>
+        <div class="edit-tab"  data-tab="tab-2">Данные вебмастера</div>
+    </div>
+    <div class="edit">
+        <div class="edit__body edit-tab-1 active" data-body="tab-1">
+            <div class="input-title">Название</div>
+            <input id="name" type="text" class="input input--mb" value="{{ config_data.name }}">
+            <div class="input-title__error">Необходимо указать название проекта</div>
+
+            <div class="input-title">Папка проекта</div>
+            <div class="search-folders search-projects-menu">
+                <div id="group_name" class="select-btn select-project-btn btn-reset">
+                {{ selected_group_name }}
+                <svg class="project__btn-icon" width="16" height="16">
+                    <use href="/static/img/svg/sprite.svg#arrow_dropdown"></use>
+                </svg>
+                </div>
+                <div class="search__dropdown-wrapper">
+                <div class="project__dropdown">
+                    {% for group in groups_data %}
+                        <div class="search__folders-wrap">
+                            <div class="folder" data-visible="false">
+                                <div class="folder__btn btn-reset">
+                                <span>{{ group.name }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                
+                    <div class="btn btn-reset btn-new-folder active">
+                    <svg width="24" height="24">
+                        <use href="/static/img/svg/sprite.svg#add"></use>
+                    </svg>
+                    <span class="btn-new-folder-text">Новая папка</span>
+                    </div>
+                    <div class="add-folder">
+                    <input type="text" class="input add-folder-name" placeholder="Введите название">
+                    <div class="btn btn-reset btn-create-folder-pop">
+                        <svg width="24" height="24">
+                        <use href="/static/img/svg/sprite.svg#add"></use>
+                        </svg>
+                        <span class="btn-new-folder-text">Создать</span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="edit__body edit-tab-2 edit-tab-2--web" data-body="tab-2">
+                <div class="input-title">Access token</div>
+                <input id="access_token" name="Accesstoken" type="text" class="input input--mb" value="{{ config_data.access_token }}">
+                <div class="input-title">User ID</div>
+                <input id="user_id" name="UserID" type="text" class="input input--mb" value="{{ config_data.user_id }}">
+                <div class="input-title">Host ID</div>
+                <input id="host_id" name="HostID" type="text" class="input input--mb" value="{{ config_data.host_id }}">
+        </div>
+        <div class="pop-project__buttons">
+            <button id="submitChanges" data-submit_url="{{ url_for('save_edit_query', config_id=config_data.id ) }}" type="submit" class="blue-button blue-button--mr btn-reset pop-project__type-btn">Сохранить</button>
+            <a href="{{ url_for('show_main_page') }}" class="transparent-button pop-project__exit-button">Отменить</a>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script
+    id="queryEditScript"
+    src="/static/js/edit_query.js"
+    data-set_config="{{ url_for('set_config') }}"
+    data-get_queries="{{ url_for('get_queries_test') }}">
+    </script>
+{% endblock %}

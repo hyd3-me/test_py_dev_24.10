@@ -1,0 +1,476 @@
+{% extends 'templates/base/base.html' %}
+{% block content %}
+<div class="box__body">
+  <div class="box__dates body-panel">
+    <div id="flatpickr-custom-container"></div>
+    <div class="body-panel__links">
+      <a href="{{ url_for('get_queries_test') }}" class="body-panel__link" {% if 'query' in request.path %}style="text-decoration: none; font-weight: 500; {% endif %}">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_548_29111)">
+            <path
+              d="M2.79498 13.3682L2.83086 13.4051L2.86674 13.3682L3.36921 12.8504L3.40301 12.8156L3.36921 12.7808L1.07463 10.4167L3.36921 8.05253L3.40301 8.01771L3.36921 7.98288L2.86674 7.46518L2.83086 7.42821L2.79498 7.46518L-0.0358792 10.3818L-0.0696783 10.4167L-0.0358792 10.4515L2.79498 13.3682Z"
+              fill="#404040" stroke="#404040" stroke-width="0.1" />
+              <path
+                d="M5.57458 7.57639H6.45634L8.03092 12.9236H7.22473L6.85943 11.5868H5.1274L4.7558 12.9236H4L5.57458 7.57639ZM6.63269 10.7465L6.00916 8.45486H5.99656L5.36043 10.7465H6.63269Z"
+                fill="#747474" />
+              <path
+                d="M8.53577 7.57639H10.0474C10.6142 7.57639 11.0173 7.7037 11.2566 7.95833C11.5002 8.21296 11.6219 8.56944 11.6219 9.02778C11.6219 9.52176 11.4351 9.89097 11.0614 10.1354V10.1507C11.5191 10.385 11.7479 10.7949 11.7479 11.3806C11.7479 11.8847 11.6261 12.2692 11.3826 12.534C11.1433 12.7937 10.7402 12.9236 10.1733 12.9236H8.53577V7.57639ZM9.29156 8.41667V9.79167H10.0159C10.3224 9.79167 10.5344 9.7331 10.652 9.61597C10.7696 9.49884 10.8284 9.32824 10.8284 9.10417C10.8284 8.88009 10.7696 8.70949 10.652 8.59236C10.5344 8.47523 10.3224 8.41667 10.0159 8.41667H9.29156ZM9.29156 10.5556V12.0833H10.1418C10.4484 12.0833 10.6604 12.0222 10.778 11.9C10.8955 11.7727 10.9543 11.5792 10.9543 11.3194C10.9543 11.0597 10.8955 10.8687 10.778 10.7465C10.6604 10.6192 10.4484 10.5556 10.1418 10.5556H9.29156Z"
+                fill="#404040" />
+              <path
+                d="M14.205 13C13.9153 13 13.6528 12.944 13.4177 12.8319C13.1826 12.7148 12.981 12.5468 12.8131 12.3278C12.6451 12.1037 12.5149 11.8287 12.4226 11.5028C12.3302 11.1718 12.284 10.7949 12.284 10.3722V10.0514C12.284 9.64907 12.3302 9.29005 12.4226 8.97431C12.5149 8.65856 12.6451 8.3912 12.8131 8.17222C12.981 7.95324 13.1826 7.78773 13.4177 7.67569C13.657 7.55856 13.9195 7.5 14.205 7.5C14.4653 7.5 14.6983 7.54583 14.9041 7.6375C15.114 7.72407 15.2946 7.8463 15.4457 8.00417C15.5969 8.16204 15.7187 8.34792 15.8111 8.56181C15.9034 8.77569 15.9664 9.00741 16 9.25694H15.1812C15.1182 8.98704 15.007 8.76806 14.8474 8.6C14.6879 8.42685 14.4737 8.34028 14.205 8.34028C13.8691 8.34028 13.5961 8.48287 13.3862 8.76806C13.1805 9.04815 13.0776 9.47593 13.0776 10.0514V10.3722C13.0776 10.6778 13.1049 10.9426 13.1595 11.1667C13.2182 11.3907 13.2959 11.5766 13.3925 11.7243C13.4933 11.872 13.6129 11.9815 13.7515 12.0528C13.8901 12.1241 14.0412 12.1597 14.205 12.1597C14.4695 12.1597 14.6795 12.0706 14.8348 11.8924C14.9944 11.7141 15.1056 11.4722 15.1686 11.1667H16C15.9664 11.4366 15.9034 11.6836 15.8111 11.9076C15.7187 12.1317 15.5969 12.3252 15.4457 12.4882C15.2946 12.6512 15.114 12.7785 14.9041 12.8701C14.6983 12.9567 14.4653 13 14.205 13Z"
+                fill="#404040" />
+              <path
+                d="M17.205 7.46517L17.1691 7.42821L17.1333 7.46517L16.6308 7.98288L16.597 8.01771L16.6308 8.05253L18.9254 10.4167L16.6308 12.7808L16.597 12.8156L16.6308 12.8504L17.1333 13.3682L17.1691 13.4051L17.205 13.3682L20.0359 10.4515L20.0697 10.4167L20.0359 10.3818L17.205 7.46517Z"
+                fill="#404040" stroke="#404040" stroke-width="0.1" />
+            </g>
+            <defs>
+              <clipPath id="clip0_548_29111">
+                <rect width="20" height="20" fill="white" transform="matrix(1 0 0 -1 0 20)" />
+              </clipPath>
+            </defs>
+          </svg>
+          <span>запросы</span>
+        </a>
+        <a href="{{ url_for('get_urls_test') }}" class="body-panel__link" {% if 'url' in request.path %}style="text-decoration: none; font-weight: 500; {% endif %}">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_548_29110)">
+              <path
+                d="M2.79498 13.3682L2.83086 13.4051L2.86674 13.3682L3.36921 12.8504L3.40301 12.8156L3.36921 12.7808L1.07463 10.4167L3.36921 8.05253L3.40301 8.01771L3.36921 7.98288L2.86674 7.46518L2.83086 7.42821L2.79498 7.46518L-0.0358792 10.3818L-0.0696783 10.4167L-0.0358792 10.4515L2.79498 13.3682Z"
+                fill="#747474" stroke="#747474" stroke-width="0.1" />
+              <path
+                d="M17.205 7.46517L17.1691 7.42821L17.1333 7.46517L16.6308 7.98288L16.597 8.01771L16.6308 8.05253L18.9254 10.4167L16.6308 12.7808L16.597 12.8156L16.6308 12.8504L17.1333 13.3682L17.1691 13.4051L17.205 13.3682L20.0359 10.4515L20.0697 10.4167L20.0359 10.3818L17.205 7.46517Z"
+                fill="#747474" stroke="#747474" stroke-width="0.1" />
+              <path
+                d="M13 12.95H13L10.65 12.95V11.85L13 11.85C13.5131 11.85 13.9509 11.6698 14.3104 11.3104C14.6698 10.9509 14.85 10.5131 14.85 10C14.85 9.48689 14.6698 9.04913 14.3104 8.68964C13.9509 8.33016 13.5131 8.15 13 8.15H10.65V7.05L13 7.05C13.8168 7.05 14.5117 7.33736 15.0874 7.91316C15.6632 8.48895 15.9504 9.18361 15.95 9.99998C15.9496 10.8164 15.6622 11.5113 15.0868 12.0875C14.5114 12.6636 13.8168 12.9508 13 12.95ZM9.35 12.95H7C6.18322 12.95 5.48856 12.6626 4.91317 12.0869C4.33776 11.5111 4.05039 10.8164 4.05 9.99998C4.04961 9.18362 4.33696 8.48896 4.91314 7.91317C5.48935 7.33735 6.18403 7.05 7 7.05H9.35V8.15H7C6.48689 8.15 6.04913 8.33016 5.68965 8.68964C5.33016 9.04913 5.15 9.48689 5.15 10C5.15 10.5131 5.33016 10.9509 5.68965 11.3104C6.04913 11.6698 6.48689 11.85 7 11.85H9.35V12.95ZM7.65 10.55V9.45L12.35 9.45V10.55L7.65 10.55Z"
+                fill="#747474" stroke="white" stroke-width="0.1" />
+            </g>
+            <defs>
+              <clipPath id="clip0_548_29110">
+                <rect width="20" height="20" fill="white" transform="matrix(1 0 0 -1 0 20)" />
+              </clipPath>
+            </defs>
+          </svg>
+          <span>URLs</span>
+        </a>
+      </div>
+      <div class="input-wrap">
+        <input id="searchText" type="text" class="input input--icon" placeholder="Начните вводить слово">
+        <label class="input-wrap-icon" for="input-search"></label>
+      </div>
+      <div class="date-dropdown">
+        <svg class="calendar-svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_598_82" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+            <rect width="20" height="20" fill="#D9D9D9"></rect>
+          </mask>
+          <g mask="url(#mask0_598_82)">
+            <path
+              d="M5.41667 3.7H5.51667V3.6V2.1H6.92778V3.6V3.7H7.02778H13.4722H13.5722V3.6V2.1H14.9833V3.6V3.7H15.0833H15.8889C16.3054 3.7 16.6594 3.84615 16.9563 4.14096C17.2531 4.43574 17.4 4.78696 17.4 5.2V16.4C17.4 16.813 17.2531 17.1643 16.9563 17.459C16.6594 17.7539 16.3054 17.9 15.8889 17.9H4.61111C4.19456 17.9 3.84058 17.7539 3.54373 17.459C3.2469 17.1643 3.1 16.813 3.1 16.4V5.2C3.1 4.78696 3.2469 4.43574 3.54373 4.14096C3.84058 3.84615 4.19456 3.7 4.61111 3.7H5.41667ZM4.51111 16.4V16.5H4.61111H15.8889H15.9889V16.4V8.4V8.3H15.8889H4.61111H4.51111V8.4V16.4ZM4.51111 6.8V6.9H4.61111H15.8889H15.9889V6.8V5.2V5.1H15.8889H4.61111H4.51111V5.2V6.8ZM10.25 11.5C10.0467 11.5 9.88118 11.4328 9.74651 11.299C9.61187 11.1653 9.54444 11.0013 9.54444 10.8C9.54444 10.5987 9.61187 10.4347 9.74651 10.301C9.88118 10.1672 10.0467 10.1 10.25 10.1C10.4533 10.1 10.6188 10.1672 10.7535 10.301C10.8881 10.4347 10.9556 10.5987 10.9556 10.8C10.9556 11.0013 10.8881 11.1653 10.7535 11.299C10.6188 11.4328 10.4533 11.5 10.25 11.5ZM7.02778 11.5C6.8245 11.5 6.65896 11.4328 6.52428 11.299C6.38965 11.1653 6.32222 11.0013 6.32222 10.8C6.32222 10.5987 6.38965 10.4347 6.52429 10.301C6.65896 10.1672 6.8245 10.1 7.02778 10.1C7.23105 10.1 7.3966 10.1672 7.53127 10.301C7.6659 10.4347 7.73333 10.5987 7.73333 10.8C7.73333 11.0013 7.6659 11.1653 7.53127 11.299C7.3966 11.4328 7.23105 11.5 7.02778 11.5ZM13.4722 11.5C13.2689 11.5 13.1034 11.4328 12.9687 11.299C12.8341 11.1653 12.7667 11.0013 12.7667 10.8C12.7667 10.5987 12.8341 10.4347 12.9687 10.301C13.1034 10.1672 13.2689 10.1 13.4722 10.1C13.6755 10.1 13.841 10.1672 13.9757 10.301C14.1103 10.4347 14.1778 10.5987 14.1778 10.8C14.1778 11.0013 14.1103 11.1653 13.9757 11.299C13.841 11.4328 13.6755 11.5 13.4722 11.5ZM10.25 14.7C10.0467 14.7 9.88118 14.6328 9.74651 14.499C9.61187 14.3653 9.54444 14.2013 9.54444 14C9.54444 13.7987 9.61187 13.6347 9.74651 13.501C9.88118 13.3672 10.0467 13.3 10.25 13.3C10.4533 13.3 10.6188 13.3672 10.7535 13.501C10.8881 13.6347 10.9556 13.7987 10.9556 14C10.9556 14.2013 10.8881 14.3653 10.7535 14.499C10.6188 14.6328 10.4533 14.7 10.25 14.7ZM7.02778 14.7C6.8245 14.7 6.65896 14.6328 6.52429 14.499C6.38965 14.3653 6.32222 14.2013 6.32222 14C6.32222 13.7987 6.38965 13.6347 6.52429 13.501C6.65896 13.3672 6.8245 13.3 7.02778 13.3C7.23105 13.3 7.3966 13.3672 7.53127 13.501C7.6659 13.6347 7.73333 13.7987 7.73333 14C7.73333 14.2013 7.6659 14.3653 7.53127 14.499C7.3966 14.6328 7.23105 14.7 7.02778 14.7ZM13.4722 14.7C13.2689 14.7 13.1034 14.6328 12.9687 14.499C12.8341 14.3653 12.7667 14.2013 12.7667 14C12.7667 13.7987 12.8341 13.6347 12.9687 13.501C13.1034 13.3672 13.2689 13.3 13.4722 13.3C13.6755 13.3 13.841 13.3672 13.9757 13.501C14.1103 13.6347 14.1778 13.7987 14.1778 14C14.1778 14.2013 14.1103 14.3653 13.9757 14.499C13.841 14.6328 13.6755 14.7 13.4722 14.7Z"
+              fill="#BBBBBB" stroke="white" stroke-width="0.2"></path>
+          </g>
+        </svg>
+        <input type="text" id="datepicker" placeholder="Выберите диапазон" class="flatpickr-input active"
+          readonly="readonly">
+        <svg class="arrow-svg" width="16" height="16" viewBox="0 0 16 16" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M10.5714 6C10.651 6 10.729 6.02069 10.7967 6.05974C10.8644 6.09879 10.9192 6.15467 10.9548 6.22111C10.9903 6.28756 11.0054 6.36194 10.9983 6.43592C10.9911 6.50991 10.962 6.58057 10.9143 6.64L8.34286 9.84C8.30294 9.88968 8.25117 9.93 8.19166 9.95777C8.13215 9.98554 8.06653 10 8 10C7.93347 10 7.86785 9.98554 7.80834 9.95777C7.74883 9.93 7.69706 9.88968 7.65714 9.84L5.08572 6.64C5.03796 6.58057 5.00888 6.50991 5.00173 6.43592C4.99458 6.36194 5.00965 6.28756 5.04525 6.22112C5.08084 6.15467 5.13555 6.09879 5.20326 6.05974C5.27096 6.02069 5.34898 6 5.42857 6L10.5714 6Z"
+            fill="#747474"></path>
+        </svg>
+      </div>
+
+
+      <div class="body-panel__download">
+        <button class="body-panel-download__btn btn-reset">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18 18.15H18.15V18V15.15H19.85V18C19.85 19.0172 19.0172 19.85 18 19.85H6C4.98284 19.85 4.15 19.0172 4.15 18V15.15H5.85V18V18.15H6H18ZM12.85 7.83V15.85H11.15V7.83V7.46886L10.8941 7.72373L8.4102 10.1981L7.21213 9L12 4.21213L16.7879 9L15.5898 10.1981L13.1059 7.72373L12.85 7.46886V7.83Z"
+              fill="#0076F5" stroke="white" stroke-width="0.3" />
+          </svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10.5714 6C10.651 6 10.729 6.02069 10.7967 6.05974C10.8644 6.09879 10.9192 6.15467 10.9548 6.22111C10.9903 6.28756 11.0054 6.36194 10.9983 6.43592C10.9911 6.50991 10.962 6.58057 10.9143 6.64L8.34286 9.84C8.30294 9.88968 8.25117 9.93 8.19166 9.95777C8.13215 9.98554 8.06653 10 8 10C7.93347 10 7.86785 9.98554 7.80834 9.95777C7.74883 9.93 7.69706 9.88968 7.65714 9.84L5.08572 6.64C5.03796 6.58057 5.00888 6.50991 5.00173 6.43592C4.99458 6.36194 5.00965 6.28756 5.04525 6.22112C5.08084 6.15467 5.13555 6.09879 5.20326 6.05974C5.27096 6.02069 5.34898 6 5.42857 6L10.5714 6Z"
+              fill="#0076F5" />
+          </svg>
+        </button>
+        <div class="project__dropdown-wrapper">
+          <div class="project__dropdown">
+            <div class="folder">
+              <button data-url="
+              {% if 'query' in request.path %}
+                {{ url_for('generate_excel_query') }}
+              {%else%}
+                {{ url_for('generate_excel_url') }}
+              {% endif %}
+              " id="generateExcel" class="folder__btn btn-reset" data-toggle>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M13.1429 16.7692V18H2V2H9.42857M9.42857 2V5.69231H13.1429M9.42857 2H10.0476L13.1429 5.07692V5.69231M13.1429 5.69231V7.53846"
+                    stroke="#404040" stroke-width="1.2" stroke-linejoin="round" />
+                  <path
+                    d="M14.9994 9.38477L13.1423 11.8463M11.2852 14.3078L13.1423 11.8463M13.1423 11.8463L11.2852 9.38477M13.1423 11.8463L14.9994 14.3078"
+                    stroke="#404040" stroke-width="1.2" stroke-linecap="square" />
+                </svg>
+                <span>XLSX</span>
+              </button>
+            </div>
+            <div class="folder">
+              <button data-url="{% if 'query' in request.path %}{{ url_for('generate_csv_query') }}{%else%}{{ url_for('generate_csv_url') }}{% endif %}" id="generateCsv" class="folder__btn btn-reset" data-toggle>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8.2 9.38462H5.72C5.55557 9.38462 5.39787 9.44945 5.28159 9.56486C5.16532 9.68026 5.1 9.83679 5.1 10V13.6923C5.1 13.8555 5.16532 14.012 5.28159 14.1275C5.39787 14.2429 5.55557 14.3077 5.72 14.3077H8.2M12.54 9.38462H10.06C9.89557 9.38462 9.73787 9.44945 9.62159 9.56486C9.50532 9.68026 9.44 9.83679 9.44 10V11.2308C9.44 11.394 9.50532 11.5505 9.62159 11.6659C9.73787 11.7813 9.89557 11.8462 10.06 11.8462H11.3C11.4644 11.8462 11.6221 11.911 11.7384 12.0264C11.8547 12.1418 11.92 12.2983 11.92 12.4615V13.6923C11.92 13.8555 11.8547 14.012 11.7384 14.1275C11.6221 14.2429 11.4644 14.3077 11.3 14.3077H8.82M13.78 8.76923C13.78 9.38462 15.02 14.3077 15.02 14.3077H16.26C16.26 14.3077 17.5 9.38462 17.5 8.76923M13.16 16.7692V18H2V2H9.44M9.44 2V5.69231H13.16M9.44 2H10.06L13.16 5.07692V5.69231M13.16 5.69231V7.53846"
+                    stroke="#404040" stroke-width="1.2" stroke-linejoin="round" />
+                </svg>
+                <span>CSV</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="body-panel__wrap">
+        <div class="body-panel__graphic-close">
+          Скрыть график
+        </div>
+        <div class="body-panel__reset-sort">
+          Сбросить сортировку
+        </div>
+        <div class="body-panel__settings">
+          <button class="settings-button btn-reset">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <mask id="mask0_2044_9118" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20"
+                height="20">
+                <rect width="20" height="20" fill="#D9D9D9" />
+              </mask>
+              <g mask="url(#mask0_2044_9118)">
+                <path
+                  d="M3.65278 6.44444V6.56944H3.77778H16.2222H16.3472V6.44444V3.77778V3.65278H16.2222H3.77778H3.65278V3.77778V6.44444ZM6.125 8.22222V8.09722H6H3.77778H3.65278V8.22222V16.2222V16.3472H3.77778H6H6.125V16.2222V8.22222ZM14 8.09722H13.875V8.22222V16.2222V16.3472H14H16.2222H16.3472V16.2222V8.22222V8.09722H16.2222H14ZM12.3472 8.22222V8.09722H12.2222H7.77778H7.65278V8.22222V16.2222V16.3472H7.77778H12.2222H12.3472V16.2222V8.22222ZM16.2222 17.875H3.77778C3.3223 17.875 2.9355 17.7143 2.61061 17.3894C2.28572 17.0645 2.125 16.6777 2.125 16.2222V3.77778C2.125 3.3223 2.28572 2.9355 2.61061 2.61061C2.9355 2.28572 3.3223 2.125 3.77778 2.125H16.2222C16.6777 2.125 17.0645 2.28572 17.3894 2.61061C17.7143 2.9355 17.875 3.3223 17.875 3.77778V16.2222C17.875 16.6777 17.7143 17.0645 17.3894 17.3894C17.0645 17.7143 16.6777 17.875 16.2222 17.875Z"
+                  fill="#404040" stroke="#F7F7F7" stroke-width="0.25" />
+              </g>
+            </svg>
+            <span>Настройки</span>
+          </button>
+          <div class="project__dropdown-wrapper">
+            <div class="settings">
+              <div class="settings__hide">
+                <div class="checkbox-wrap">
+                  <label for="checkbox-hide" class="gui-switch">
+                    <input type="checkbox" role="switch" id="checkbox-hide" />
+                    <span>Скрыть дни без данных</span>
+                  </label>
+                </div>
+              </div>
+              <div class="settings__cut">
+                <label for="light-switch-2" class="gui-switch">
+                  <input type="checkbox" role="switch" id="light-switch-2" />
+                  <span>Сокращенный вид</span>
+                </label>
+              </div>
+              <div class="settings__summ">
+                <label for="light-switch-3" class="gui-switch">
+                  <input type="checkbox" role="switch" id="light-switch-3" />
+                  <span>Вычислить суммы</span>
+                </label>
+              </div>
+              <div class="settings__graphic">
+                <label for="checkbox-graphic" class="gui-switch">
+                  <input type="checkbox" role="switch" id="checkbox-graphic"/>
+                  <span>Показать график</span>
+                </label>
+              </div>
+              <a href="{{ url_for('edit_query', config_id=config_id) }}" class="settings__edit mb16">
+                <span class="item-rent__change">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M13.9372 9.24505L13.8311 9.13898L13.725 9.24505L5.67171 17.2984L5.62778 17.3423V17.4044V18.2222V18.3722H5.77778H6.59556H6.65769L6.70162 18.3283L14.755 10.275L14.861 10.1689L14.755 10.0628L13.9372 9.24505ZM19.6363 7.48494L19.6362 7.48505L18.1156 9.00565L14.9944 5.88444L16.515 4.36384C16.6547 4.22412 16.8472 4.15 17.0311 4.15C17.2259 4.15 17.4089 4.21657 17.5562 4.36384L19.6362 6.44384L19.6363 6.44395C19.7047 6.51225 19.759 6.59338 19.7961 6.6827C19.8331 6.77201 19.8522 6.86775 19.8522 6.96444C19.8522 7.06114 19.8331 7.15688 19.7961 7.24619C19.759 7.33551 19.7047 7.41664 19.6363 7.48494ZM4.15 16.7288L13.8311 7.04769L16.9523 10.1689L7.2712 19.85H4.15V16.7288Z"
+                      fill="#0076F5" stroke="white" stroke-width="0.3"></path>
+                  </svg>
+                </span>
+                <span>Редактировать проект</span>
+              </a>
+              <button class="btn btn-reset">Применить</button>
+            </div>
+            <div class="body-panel__delete">
+              <span>Очистить данные за </span>
+              <input id="deleteDaysInput" type="text" class="input short--input" value=1>
+              <span>дней</span>
+            </div>
+
+            <button id="deleteDaysConfirm" class="delete-button btn-reset" data-url="{% if 'query' in request.url.path %}{{ url_for('delete_query') }}{% else %}{{ url_for('delete_url') }}{% endif %}">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_171_2911" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                  height="24">
+                  <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_171_2911)">
+                  <path
+                    d="M5.975 6.66667V6.56667H5.875H5.1V4.98889H9.375H9.475V4.88889V4.1H14.525V4.88889V4.98889H14.625H18.9V6.56667H18.125H18.025V6.66667V18.2222C18.025 18.6849 17.864 19.0782 17.5397 19.4076C17.2154 19.737 16.829 19.9 16.375 19.9H7.625C7.171 19.9 6.78456 19.737 6.46033 19.4076C6.13605 19.0782 5.975 18.6849 5.975 18.2222V6.66667ZM16.475 6.66667V6.56667H16.375H7.625H7.525V6.66667V18.2222V18.3222H7.625H16.375H16.475V18.2222V6.66667ZM11.025 8.54444V16.3444H9.475V8.54444H11.025ZM14.525 8.54444V16.3444H12.975V8.54444H14.525Z"
+                    fill="#E50C00" stroke="#FDF4F4" stroke-width="0.2" />
+                </g>
+              </svg>
+              <span>Удалить</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="myChart-wrap">
+    <canvas id="myChart"></canvas>
+  </div>
+  <div class="cssload-container">
+    <div class="cssload-thing"></div>
+    <div class="cssload-thing"></div>
+    <div class="cssload-thing"></div>
+    <div class="cssload-thing"></div>
+    <div class="cssload-thing"></div>
+    <div class="cssload-thing"></div>
+    <div class="cssload-thing"></div>
+    <div class="cssload-thing"></div>
+  </div>
+  <div class="positions">
+    <div class="positions__header header-pos">
+      <div class="header-pos__base" style="height: 100%; padding: 0">
+        <div style="display: flex; height: 100%;">
+          <div class="checkbox">
+            <input style="margin: 0 10px 0 0; padding: 0;" type="checkbox" role="switch" id="word" class="all-positions" />
+          </div>
+          <div class="header-pos__characters" data-metric="W">
+            <span>Ключевые слова</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M5.42857 10C5.34898 10 5.27096 9.97931 5.20326 9.94026C5.13555 9.90121 5.08084 9.84533 5.04525 9.77889C5.00965 9.71244 4.99458 9.63806 5.00173 9.56408C5.00888 9.49009 5.03796 9.41943 5.08571 9.36L7.65714 6.16C7.69706 6.11032 7.74883 6.07 7.80834 6.04223C7.86785 6.01446 7.93347 6 8 6C8.06653 6 8.13215 6.01446 8.19166 6.04223C8.25117 6.07 8.30294 6.11032 8.34286 6.16L10.9143 9.36C10.962 9.41943 10.9911 9.49009 10.9983 9.56408C11.0054 9.63806 10.9903 9.71244 10.9548 9.77889C10.9192 9.84533 10.8644 9.90121 10.7967 9.94026C10.729 9.97931 10.651 10 10.5714 10H5.42857Z"
+                fill="#404040" />
+            </svg>
+          </div>
+        </div>
+        <div class="header-pos__characters" data-metric="P">
+          <span>Позиция</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M5.42857 10C5.34898 10 5.27096 9.97931 5.20326 9.94026C5.13555 9.90121 5.08084 9.84533 5.04525 9.77889C5.00965 9.71244 4.99458 9.63806 5.00173 9.56408C5.00888 9.49009 5.03796 9.41943 5.08571 9.36L7.65714 6.16C7.69706 6.11032 7.74883 6.07 7.80834 6.04223C7.86785 6.01446 7.93347 6 8 6C8.06653 6 8.13215 6.01446 8.19166 6.04223C8.25117 6.07 8.30294 6.11032 8.34286 6.16L10.9143 9.36C10.962 9.41943 10.9911 9.49009 10.9983 9.56408C11.0054 9.63806 10.9903 9.71244 10.9548 9.77889C10.9192 9.84533 10.8644 9.90121 10.7967 9.94026C10.729 9.97931 10.651 10 10.5714 10H5.42857Z"
+              fill="#404040" />
+          </svg>
+        </div>
+      </div>
+      <div class="header-pos__others positions-others" style="height: 100%">
+        <div class="header-pos__characters" data-metric="K">
+          <span>Клики</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M5.42857 10C5.34898 10 5.27096 9.97931 5.20326 9.94026C5.13555 9.90121 5.08084 9.84533 5.04525 9.77889C5.00965 9.71244 4.99458 9.63806 5.00173 9.56408C5.00888 9.49009 5.03796 9.41943 5.08571 9.36L7.65714 6.16C7.69706 6.11032 7.74883 6.07 7.80834 6.04223C7.86785 6.01446 7.93347 6 8 6C8.06653 6 8.13215 6.01446 8.19166 6.04223C8.25117 6.07 8.30294 6.11032 8.34286 6.16L10.9143 9.36C10.962 9.41943 10.9911 9.49009 10.9983 9.56408C11.0054 9.63806 10.9903 9.71244 10.9548 9.77889C10.9192 9.84533 10.8644 9.90121 10.7967 9.94026C10.729 9.97931 10.651 10 10.5714 10H5.42857Z"
+              fill="#404040" />
+          </svg>
+        </div>
+        <div class="header-pos__characters" data-metric="C">
+          <span>CTR</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M5.42857 10C5.34898 10 5.27096 9.97931 5.20326 9.94026C5.13555 9.90121 5.08084 9.84533 5.04525 9.77889C5.00965 9.71244 4.99458 9.63806 5.00173 9.56408C5.00888 9.49009 5.03796 9.41943 5.08571 9.36L7.65714 6.16C7.69706 6.11032 7.74883 6.07 7.80834 6.04223C7.86785 6.01446 7.93347 6 8 6C8.06653 6 8.13215 6.01446 8.19166 6.04223C8.25117 6.07 8.30294 6.11032 8.34286 6.16L10.9143 9.36C10.962 9.41943 10.9911 9.49009 10.9983 9.56408C11.0054 9.63806 10.9903 9.71244 10.9548 9.77889C10.9192 9.84533 10.8644 9.90121 10.7967 9.94026C10.729 9.97931 10.651 10 10.5714 10H5.42857Z"
+              fill="#404040" />
+          </svg>
+        </div>
+        <div class="header-pos__characters" data-metric="R">
+          <span>Показы</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M5.42857 10C5.34898 10 5.27096 9.97931 5.20326 9.94026C5.13555 9.90121 5.08084 9.84533 5.04525 9.77889C5.00965 9.71244 4.99458 9.63806 5.00173 9.56408C5.00888 9.49009 5.03796 9.41943 5.08571 9.36L7.65714 6.16C7.69706 6.11032 7.74883 6.07 7.80834 6.04223C7.86785 6.01446 7.93347 6 8 6C8.06653 6 8.13215 6.01446 8.19166 6.04223C8.25117 6.07 8.30294 6.11032 8.34286 6.16L10.9143 9.36C10.962 9.41943 10.9911 9.49009 10.9983 9.56408C11.0054 9.63806 10.9903 9.71244 10.9548 9.77889C10.9192 9.84533 10.8644 9.90121 10.7967 9.94026C10.729 9.97931 10.651 10 10.5714 10H5.42857Z"
+              fill="#404040" />
+          </svg>
+        </div>
+      </div>
+      <div class="header-pos__dates">
+      </div>
+    </div>
+    <div class="positions__total" data-url="
+    {% if 'query' in request.path %}
+      {{ url_for('get_total_sum_test') }}
+    {% else %}
+      {{ url_for('get_total_sum_urls_test') }}
+    {% endif %}
+    ">
+    </div>
+    <div class="positions__items">
+
+    </div>
+
+  </div>
+  <div class="pos-pag">
+    <div class="pos-pag__delete">
+      <button class="delete-button btn-reset">
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_2082_5379" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+            height="25">
+            <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_2082_5379)">
+            <path
+              d="M5.975 7.16667V7.06667H5.875H5.1V5.48889H9.375H9.475V5.38889V4.6H14.525V5.38889V5.48889H14.625H18.9V7.06667H18.125H18.025V7.16667V18.7222C18.025 19.1849 17.864 19.5782 17.5397 19.9076C17.2154 20.237 16.829 20.4 16.375 20.4H7.625C7.171 20.4 6.78456 20.237 6.46033 19.9076C6.13605 19.5782 5.975 19.1849 5.975 18.7222V7.16667ZM16.475 7.16667V7.06667H16.375H7.625H7.525V7.16667V18.7222V18.8222H7.625H16.375H16.475V18.7222V7.16667ZM11.025 9.04444V16.8444H9.475V9.04444H11.025ZM14.525 9.04444V16.8444H12.975V9.04444H14.525Z"
+              fill="#E50C00" stroke="#FDF4F4" stroke-width="0.2" />
+          </g>
+        </svg>
+        <span>Удалить</span>
+      </button>
+      <span>Выбрано слов <span class="pos-pag__delete-count">1</span></span>
+
+      <div class="copy-wrap">
+        <button class="btn copy-button btn-reset">
+          <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2001_7957" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+              height="25">
+              <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2001_7957)">
+              <path
+                d="M9.84118 15.7V15.8H9.94118H17.3529H17.4529V15.7V6.1V6H17.3529H9.94118H9.84118V6.1V15.7ZM6.64706 19H15.6059V20.4H6.64706C6.21993 20.4 5.85724 20.2533 5.5535 19.9583C5.24986 19.6633 5.1 19.3123 5.1 18.9V7.8H6.54706V18.9V19H6.64706ZM9.94118 17.2C9.51404 17.2 9.15135 17.0533 8.84762 16.7583C8.54397 16.4633 8.39412 16.1123 8.39412 15.7V6.1C8.39412 5.68769 8.54397 5.3367 8.84762 5.04173C9.15135 4.74667 9.51404 4.6 9.94118 4.6H17.3529C17.7801 4.6 18.1428 4.74667 18.4465 5.04173C18.7501 5.3367 18.9 5.68769 18.9 6.1V15.7C18.9 16.1123 18.7501 16.4633 18.4465 16.7583C18.1428 17.0533 17.7801 17.2 17.3529 17.2H9.94118Z"
+                fill="#0076F5" stroke="#DFEFFF" stroke-width="0.2" />
+            </g>
+          </svg>
+          <span>Скопировать</span>
+        </button>
+        <div class="project__dropdown-wrapper">
+          <span class="copy-variant">Список слов</span>
+          <span class="copy-variant">Список слов с данными </span>
+          <span class="copy-variant">Список слов с данными и суммами</span>
+        </div>
+
+      </div>
+      <!-- TO URL ----- -->
+      <div class="search-folders search-projects-menu">
+        <div class="btn select-project-btn btn-grouping btn-reset">
+          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.11111 16.5V9.38889H0V7.61111H7.11111V0.5H8.88889V7.61111H16V9.38889H8.88889V16.5H7.11111Z"
+              fill="#0076F5" />
+          </svg>
+          <span>В группу</span>
+          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10.5714 6.5C10.651 6.5 10.729 6.52069 10.7967 6.55974C10.8644 6.59879 10.9192 6.65467 10.9548 6.72111C10.9903 6.78756 11.0054 6.86194 10.9983 6.93592C10.9911 7.00991 10.962 7.08057 10.9143 7.14L8.34286 10.34C8.30294 10.3897 8.25117 10.43 8.19166 10.4578C8.13215 10.4855 8.06653 10.5 8 10.5C7.93347 10.5 7.86785 10.4855 7.80834 10.4578C7.74883 10.43 7.69706 10.3897 7.65714 10.34L5.08572 7.14C5.03796 7.08057 5.00888 7.00991 5.00173 6.93592C4.99458 6.86194 5.00965 6.78756 5.04525 6.72112C5.08084 6.65467 5.13555 6.59879 5.20326 6.55974C5.27096 6.52069 5.34898 6.5 5.42857 6.5L10.5714 6.5Z"
+              fill="#0076F5" />
+          </svg>
+        </div>
+        <div class="search__dropdown-wrapper">
+          <div class="project__dropdown">
+            <div class="input-wrap">
+              <input id="input-search" type="text" class="input input--icon" placeholder="Введите название группы">
+              <label class="input-wrap-icon" for="input-search"></label>
+            </div>
+            <div class="search__folders-wrap">
+              <div class="folder" data-visible="false">
+                <div class="folder__btn btn-reset">
+                  <span>Папка 1</span>
+                </div>
+              </div>
+              <div class="folder" data-visible="false">
+                <div class="folder__btn btn-reset">
+                  <span>Папка 2</span>
+                </div>
+              </div>
+              <div class="folder" data-visible="false">
+                <div class="folder__btn btn-reset">
+                  <span>Папка 3</span>
+                </div>
+              </div>
+            </div>
+            <div class="btn btn-reset btn-new-folder active">
+              <svg width="24" height="24">
+                <use href="/static/img/svg/sprite.svg#add"></use>
+              </svg>
+              <span class="btn-new-folder-text">Новая папка</span>
+            </div>
+            <div class="add-folder">
+              <input type="text" class="input add-folder-name" placeholder="Введите название  
+                      " />
+              <div class="btn btn-reset btn-create-folder-pop">
+                <svg width="24" height="24">
+                  <use href="/static/img/svg/sprite.svg#add"></use>
+                </svg>
+                <span class="btn-new-folder-text">Создать</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn btn-graphics">
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_2006_17231" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+            height="25">
+            <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_2006_17231)">
+            <path
+              d="M7.18647 19.3946L12.3049 14.0718L14.8995 16.7602L14.9714 16.8348L15.0434 16.7602L18.9143 12.7493L19.8609 13.7301L14.9716 18.7772L12.3767 16.0885L12.3048 16.0139L12.2328 16.0885L8.11429 20.356L7.18647 19.3946ZM5.42381 19.6073C5.07557 19.5847 4.7755 19.4425 4.51957 19.1773C4.23936 18.8869 4.1 18.5402 4.1 18.1316V7.07895C4.1 6.67034 4.23936 6.32361 4.51957 6.03326C4.79968 5.74302 5.13267 5.6 5.52381 5.6H16.1905C16.5816 5.6 16.9146 5.74302 17.1947 6.03326C17.4749 6.32361 17.6143 6.67034 17.6143 7.07895V10.2947H5.52381H5.42381V10.3947V19.6073ZM5.42381 8.81579V8.91579H5.52381H16.1905H16.2905V8.81579V7.07895V6.97895H16.1905H5.52381H5.42381V7.07895V8.81579Z"
+              fill="#0076F5" stroke="#F2F8FE" stroke-width="0.2" />
+          </g>
+        </svg>
+      </div>
+      <!-- ----- TO URL -->
+    </div>
+    <div class="pos-pag__wrap">
+      <div class="pos-pag__pages">
+        <svg class="pos-pag__arrow-1" width="10" height="17" viewBox="0 0 10 17" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M9.28697 1.92L2.7585 8.39349L2.65108 8.5L2.7585 8.60651L9.28696 15.08L8.06794 16.2888L0.213035 8.5L8.06794 0.711241L9.28697 1.92Z"
+            fill="#747474" stroke="white" stroke-width="0.3" />
+        </svg>
+        <span>Страница</span>
+        <input id="currentPage" type="text" class="input short--input" value="1">
+        <span id="pagesCount">Из 5</span>
+        <svg class="pos-pag__arrow-2" width="10" height="17" viewBox="0 0 10 17" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0.213035 1.92L6.7415 8.39349L6.84892 8.5L6.7415 8.60651L0.213036 15.08L1.43206 16.2888L9.28697 8.5L1.43206 0.711241L0.213035 1.92Z"
+            fill="#747474" stroke="white" stroke-width="0.3" />
+        </svg>
+      </div>
+      <div class="pos-pag__items">
+        <div class="pos-pag__variables">
+          <button class="pos-pag-button btn-reset">
+            <span id="selectedPagesCnt">50</span>
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10.5714 6.5C10.651 6.5 10.729 6.52069 10.7967 6.55974C10.8644 6.59879 10.9192 6.65467 10.9548 6.72111C10.9903 6.78756 11.0054 6.86194 10.9983 6.93592C10.9911 7.00991 10.962 7.08057 10.9143 7.14L8.34286 10.34C8.30294 10.3897 8.25117 10.43 8.19166 10.4578C8.13215 10.4855 8.06653 10.5 8 10.5C7.93347 10.5 7.86785 10.4855 7.80834 10.4578C7.74883 10.43 7.69706 10.3897 7.65714 10.34L5.08572 7.14C5.03796 7.08057 5.00888 7.00991 5.00173 6.93592C4.99458 6.86194 5.00965 6.78756 5.04525 6.72112C5.08084 6.65467 5.13555 6.59879 5.20326 6.55974C5.27096 6.52069 5.34898 6.5 5.42857 6.5L10.5714 6.5Z"
+                fill="#747474" />
+            </svg>
+          </button>
+          <div id="paginationDropdown" class="project__dropdown-wrapper">
+            <div class="pos-pag__variable">50</div>
+            <div class="pos-pag__variable">100</div>
+            <div class="pos-pag__variable">500</div>
+            <div class="pos-pag__variable">1000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include '/templates/utils/calendarPick.html' %}
+{% endblock %}
+{% block scripts %}
+    <script type="module" src="/static/js/dateUtils.js"></script>
+    <script type="module" src="/static/js/datePicker.js"></script>
+    <script type="module" src="/static/js/query.js" 
+    data-updateDataQueryUrl="
+    {% if 'query' in request.path %}
+      {{ url_for('load_queries_script') }}
+    {% else %}
+      {{ url_for('load_urls_script') }}
+    {% endif %} 
+    "
+    data-setDataTableUrl="
+    {% if 'query' in request.path %}
+      {{ url_for('get_queries_test') }}
+    {% else %}
+      {{ url_for('get_urls_test') }}
+    {% endif %} 
+    " id="queryScript"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.2.1"></script>
+
+    <script type="module" src="/static/js/graphic.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+
+{% endblock%}

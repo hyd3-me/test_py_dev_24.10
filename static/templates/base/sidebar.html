@@ -1,0 +1,118 @@
+<div class="sidebar" data-expanded="false">
+    <div class="sidebar__header" data-expanded="false">
+        <div class="logo-container">
+            <a href="/" class="logo" data-expanded="false"><img width="54" height="23" src="/static/img/svg/logo.svg"
+                    alt="logo" /> </a><a href="/" class="pre-logo" data-expanded="false"><img width="16" height="23"
+                    src="/static/img/svg/pre-logo.svg" alt="logo" /></a>
+        </div>
+        <button class="sidebar__collapse-btn btn-reset cl" data-collapse="sidebar" data-expanded="false">
+            <svg width="16" height="16">
+                <use href="/static/img/svg/sprite.svg#arrow_back"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="sidebar__body">
+        <ul class="menu list-reset">
+            <li>
+                <!-- <a href="#" class="menu-link" data-expanded="false"
+            ><svg width="20" height="20">
+              <use href="/static/img/svg/sprite.svg#screen_search_desktop"></use>
+            </svg>
+            <span>Аналитика проекта</span></a
+          > -->
+                <a href="{{ url_for('get_my_projects') }}" {% if 'live_search_list/my_projects' in request.url.path %}style="font-weight: 700;"{% endif %} class="menu-link" data-expanded="false">
+                    <svg width="20" height="20">
+                        <use href="/static/img/svg/sprite.svg#grid_view"></use>
+                    </svg>
+                    <span>Мои проекты</span>
+                </a>
+            </li>
+            <li>
+                <div class="dropdown" data-expanded="false" data-dropdown data-visible="false">
+                    <button class="dropdown__btn btn-reset" data-expanded="false" data-toggle>
+                        <a href="{{url_for('show_main_page')}}">
+                            <svg width="20" height="20">
+                                <use href="/static/img/svg/sprite.svg#tool_with_arrows"></use>
+                            </svg>
+                        </a>
+                        <a href="{{url_for('show_main_page')}}" {% if 'live_search_list/my_projects' not in request.url.path and 'admin/live_search/' not in request.url.path %}style="font-weight: 700;"{% endif %}>Позиции из Я.Вебмастера</a>
+                        <svg class="dropdown__btn-icon" width="16" height="16">
+                            <use href="/static/img/svg/sprite.svg#arrow_dropdown"></use>
+                        </svg>
+                    </button>
+                    <ul class="dropdown__submenu list-reset" data-expanded="false" data-submenu>
+                        <li class="dropdown__item">
+                            <a href="query.html" class="dropdown__link">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_548_29111)">
+                                        <path
+                                            d="M2.79498 13.3682L2.83086 13.4051L2.86674 13.3682L3.36921 12.8504L3.40301 12.8156L3.36921 12.7808L1.07463 10.4167L3.36921 8.05253L3.40301 8.01771L3.36921 7.98288L2.86674 7.46518L2.83086 7.42821L2.79498 7.46518L-0.0358792 10.3818L-0.0696783 10.4167L-0.0358792 10.4515L2.79498 13.3682Z"
+                                            fill="#747474" stroke="#747474" stroke-width="0.1" />
+                                        <path
+                                            d="M5.57458 7.57639H6.45634L8.03092 12.9236H7.22473L6.85943 11.5868H5.1274L4.7558 12.9236H4L5.57458 7.57639ZM6.63269 10.7465L6.00916 8.45486H5.99656L5.36043 10.7465H6.63269Z"
+                                            fill="#747474" />
+                                        <path
+                                            d="M8.53577 7.57639H10.0474C10.6142 7.57639 11.0173 7.7037 11.2566 7.95833C11.5002 8.21296 11.6219 8.56944 11.6219 9.02778C11.6219 9.52176 11.4351 9.89097 11.0614 10.1354V10.1507C11.5191 10.385 11.7479 10.7949 11.7479 11.3806C11.7479 11.8847 11.6261 12.2692 11.3826 12.534C11.1433 12.7937 10.7402 12.9236 10.1733 12.9236H8.53577V7.57639ZM9.29156 8.41667V9.79167H10.0159C10.3224 9.79167 10.5344 9.7331 10.652 9.61597C10.7696 9.49884 10.8284 9.32824 10.8284 9.10417C10.8284 8.88009 10.7696 8.70949 10.652 8.59236C10.5344 8.47523 10.3224 8.41667 10.0159 8.41667H9.29156ZM9.29156 10.5556V12.0833H10.1418C10.4484 12.0833 10.6604 12.0222 10.778 11.9C10.8955 11.7727 10.9543 11.5792 10.9543 11.3194C10.9543 11.0597 10.8955 10.8687 10.778 10.7465C10.6604 10.6192 10.4484 10.5556 10.1418 10.5556H9.29156Z"
+                                            fill="#747474" />
+                                        <path
+                                            d="M14.205 13C13.9153 13 13.6528 12.944 13.4177 12.8319C13.1826 12.7148 12.981 12.5468 12.8131 12.3278C12.6451 12.1037 12.5149 11.8287 12.4226 11.5028C12.3302 11.1718 12.284 10.7949 12.284 10.3722V10.0514C12.284 9.64907 12.3302 9.29005 12.4226 8.97431C12.5149 8.65856 12.6451 8.3912 12.8131 8.17222C12.981 7.95324 13.1826 7.78773 13.4177 7.67569C13.657 7.55856 13.9195 7.5 14.205 7.5C14.4653 7.5 14.6983 7.54583 14.9041 7.6375C15.114 7.72407 15.2946 7.8463 15.4457 8.00417C15.5969 8.16204 15.7187 8.34792 15.8111 8.56181C15.9034 8.77569 15.9664 9.00741 16 9.25694H15.1812C15.1182 8.98704 15.007 8.76806 14.8474 8.6C14.6879 8.42685 14.4737 8.34028 14.205 8.34028C13.8691 8.34028 13.5961 8.48287 13.3862 8.76806C13.1805 9.04815 13.0776 9.47593 13.0776 10.0514V10.3722C13.0776 10.6778 13.1049 10.9426 13.1595 11.1667C13.2182 11.3907 13.2959 11.5766 13.3925 11.7243C13.4933 11.872 13.6129 11.9815 13.7515 12.0528C13.8901 12.1241 14.0412 12.1597 14.205 12.1597C14.4695 12.1597 14.6795 12.0706 14.8348 11.8924C14.9944 11.7141 15.1056 11.4722 15.1686 11.1667H16C15.9664 11.4366 15.9034 11.6836 15.8111 11.9076C15.7187 12.1317 15.5969 12.3252 15.4457 12.4882C15.2946 12.6512 15.114 12.7785 14.9041 12.8701C14.6983 12.9567 14.4653 13 14.205 13Z"
+                                            fill="#747474" />
+                                        <path
+                                            d="M17.205 7.46517L17.1691 7.42821L17.1333 7.46517L16.6308 7.98288L16.597 8.01771L16.6308 8.05253L18.9254 10.4167L16.6308 12.7808L16.597 12.8156L16.6308 12.8504L17.1333 13.3682L17.1691 13.4051L17.205 13.3682L20.0359 10.4515L20.0697 10.4167L20.0359 10.3818L17.205 7.46517Z"
+                                            fill="#747474" stroke="#747474" stroke-width="0.1" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_548_29111">
+                                            <rect width="20" height="20" fill="white"
+                                                transform="matrix(1 0 0 -1 0 20)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span style="font-weight: 500;">Запросы Я.Вебмастер</span>
+                            </a>
+                        </li>
+                        <li class="dropdown__item">
+                            <a href="url.html" class="dropdown__link">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_548_29110)">
+                                        <path
+                                            d="M2.79498 13.3682L2.83086 13.4051L2.86674 13.3682L3.36921 12.8504L3.40301 12.8156L3.36921 12.7808L1.07463 10.4167L3.36921 8.05253L3.40301 8.01771L3.36921 7.98288L2.86674 7.46518L2.83086 7.42821L2.79498 7.46518L-0.0358792 10.3818L-0.0696783 10.4167L-0.0358792 10.4515L2.79498 13.3682Z"
+                                            fill="#747474" stroke="#747474" stroke-width="0.1" />
+                                        <path
+                                            d="M17.205 7.46517L17.1691 7.42821L17.1333 7.46517L16.6308 7.98288L16.597 8.01771L16.6308 8.05253L18.9254 10.4167L16.6308 12.7808L16.597 12.8156L16.6308 12.8504L17.1333 13.3682L17.1691 13.4051L17.205 13.3682L20.0359 10.4515L20.0697 10.4167L20.0359 10.3818L17.205 7.46517Z"
+                                            fill="#747474" stroke="#747474" stroke-width="0.1" />
+                                        <path
+                                            d="M13 12.95H13L10.65 12.95V11.85L13 11.85C13.5131 11.85 13.9509 11.6698 14.3104 11.3104C14.6698 10.9509 14.85 10.5131 14.85 10C14.85 9.48689 14.6698 9.04913 14.3104 8.68964C13.9509 8.33016 13.5131 8.15 13 8.15H10.65V7.05L13 7.05C13.8168 7.05 14.5117 7.33736 15.0874 7.91316C15.6632 8.48895 15.9504 9.18361 15.95 9.99998C15.9496 10.8164 15.6622 11.5113 15.0868 12.0875C14.5114 12.6636 13.8168 12.9508 13 12.95ZM9.35 12.95H7C6.18322 12.95 5.48856 12.6626 4.91317 12.0869C4.33776 11.5111 4.05039 10.8164 4.05 9.99998C4.04961 9.18362 4.33696 8.48896 4.91314 7.91317C5.48935 7.33735 6.18403 7.05 7 7.05H9.35V8.15H7C6.48689 8.15 6.04913 8.33016 5.68965 8.68964C5.33016 9.04913 5.15 9.48689 5.15 10C5.15 10.5131 5.33016 10.9509 5.68965 11.3104C6.04913 11.6698 6.48689 11.85 7 11.85H9.35V12.95ZM7.65 10.55V9.45L12.35 9.45V10.55L7.65 10.55Z"
+                                            fill="#747474" stroke="white" stroke-width="0.1" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_548_29110">
+                                            <rect width="20" height="20" fill="white"
+                                                transform="matrix(1 0 0 -1 0 20)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span>URLs Я.Вебмастер</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="dropdown__popup" data-expanded="false">
+                        <a href="query.html" class="dropdown__popup-link" style="font-weight: 500;">Ключевые слова</a>
+                        <a href="url.html" class="dropdown__popup-link">URLs</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="{{url_for('show_live_search_test', username='None')}}" {% if 'admin/live_search/' in request.url.path %}style="font-weight: 700;"{% endif %} class="menu-link" data-expanded="false">
+                    <svg width="20" height="20">
+                        <use href="/static/img/svg/sprite.svg#search_box"></use>
+                    </svg>
+                    <span>Съем позиций (Live/XML)</span>
+                </a>
+            </li>
+        </ul>
+        <div class="divider"></div>
+    </div>
+</div>

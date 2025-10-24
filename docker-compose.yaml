@@ -1,0 +1,21 @@
+version: "3.0"
+volumes:
+    postgres:
+services:
+  db:
+    container_name: "db-test"
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=db_pass
+      - POSTGRES_DB=general
+      - PGDATA=postgres
+    ports:
+      - "5444:5432"
+    networks:
+      - custom
+networks:
+  custom:
+    driver: bridge
+

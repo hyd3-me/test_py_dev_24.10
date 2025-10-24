@@ -1,0 +1,82 @@
+<header class="header">
+    <div class="header__inner">
+        <div class="header__left">
+            <button class="burger btn-reset">
+                <svg width="16" height="12">
+                    <use href="/static/img/svg/sprite.svg#burger"></use>
+                </svg>
+            </button>
+            <div class="header__inner-wrapper">
+                <div class="project">
+                    <button id="groupTitle" class="project__btn btn-reset">
+                        <span></span>
+                        <svg class="project__btn-icon" width="16" height="16">
+                            <use href="/static/img/svg/sprite.svg#arrow_dropdown"></use>
+                        </svg>
+                    </button>
+                    <div class="project__dropdown-wrapper">
+                        <div id="projectsDropdown" 
+                            data-urlsetgroup="{{ url_for('set_group') }}"
+                            data-urlgetconfigs="{{ url_for('get_grouped_configs') }}"
+                            data-movetoconfig="{{ url_for('get_queries_test') }}"
+                            data-setconfig="{{ url_for('set_config') }}"
+                            class="project__dropdown">
+                        </div>
+                    </div>
+                </div>
+                <div class="refresh" id="updateQueries">
+                    <button class="refresh__btn btn-reset">
+                        <svg width="24" height="24">
+                            <use href="/static/img/svg/sprite.svg#refresh"></use>
+                        </svg>
+                    </button>
+                    <span>Обновлено <span data-refresh-date>{{ last_update_date }}</span> в
+                        <span data-refresh-time>00:00</span></span>
+                </div>
+            </div>
+            <button class="btn btn-reset open-popup-new-poject">
+                <svg width="24" height="24">
+                    <use href="/static/img/svg/sprite.svg#add"></use>
+                </svg>
+                <span>Новый проект</span>
+            </button>
+        </div>
+        <div class="header__right">
+            <div class="user">
+                <button class="user__btn btn-reset">
+                    <svg width="24" height="24">
+                        <use href="/static/img/svg/sprite.svg#user"></use>
+                    </svg>
+                </button>
+                <div class="user__dropdown">
+                    {% if user %}
+                        <a href="{{ url_for('show_user_menu') }}" class="action-btn btn-reset">
+                            <svg width="20" height="20">
+                                <use href="/static/img/svg/sprite.svg#settings"></use>
+                            </svg>
+                            <span>Настройки аккаунта</span>
+                        </a>
+                        <a href="{{ url_for('get_roles') }}" class="action-btn btn-reset">
+                            <svg width="20" height="20">
+                                <use href="/static/img/svg/sprite.svg#key"></use>
+                            </svg>
+                            <span>Управление доступами</span>
+                        </a>
+                        <div class="divider"></div>
+                        <button class="action-btn btn-reset">
+                            <svg width="20" height="20">
+                                <use href="/static/img/svg/sprite.svg#move_item"></use>
+                            </svg>
+                            <span id="logoutButton" class="text-red">Выйти из аккаунта</span>
+                        </button>
+                    {% else %}
+                        <button class="action-btn btn-reset">
+                            <a href="{{ url_for('login_page_test') }}">Войти или создать аккаунт</a>
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/static/js/header.js"></script>
+</header>
